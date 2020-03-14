@@ -96,78 +96,102 @@ function underlineWide(tab) {
 
   switch (tab) {
     case tabAbout:
-      if (tabAbout.offsetLeft >= activeTab.offsetLeft) {
+        
+      if (tabAbout.offsetLeft > activeTab.offsetLeft) {
+          console.log('>');
         line.style.right = 'auto';
+
+        left = activeTab.offsetLeft - menu.offsetLeft+'px';
+        line.style.left = left;
+
         widthL =
           tabAbout.offsetLeft - activeTab.offsetLeft + tabAbout.offsetWidth;
-      } else {
+      } else if (tabAbout.offsetLeft < activeTab.offsetLeft) {
           line.style.left ='auto';
+
+          console.log('<');
+
           right =  menu.offsetWidth - activeTab.offsetLeft -activeTab.offsetWidth +'px';
           line.style.right = right;
-          console.log('right'+right);
+
         widthL =
           activeTab.offsetLeft - tabAbout.offsetLeft + activeTab.offsetWidth;
-          console.log('widthL'+widthL);
+      }
+      else if (tabAbout.offsetLeft = activeTab.offsetLeft){
+        console.log('=');
+        widthL = activeTab.offsetWidth;
       }
       break;
     case tabFeatures:
-        if (tabFeatures.offsetLeft >= activeTab.offsetLeft) {
+        if (tabFeatures.offsetLeft > activeTab.offsetLeft) {
             line.style.right = 'auto';
-            console.log(tabFeatures.offsetLeft   + '>' + activeTab.offsetLef);
-            // line.style.right = '-50px';
+
+            left = activeTab.offsetLeft - menu.offsetLeft+'px';
+        line.style.left = left;
+
             widthL =
             tabFeatures.offsetLeft - activeTab.offsetLeft + tabFeatures.offsetWidth;
-          } else {
+
+          } else if (tabFeatures.offsetLeft < activeTab.offsetLeft) {
             line.style.left ='auto';
+
             right = menu.offsetWidth - activeTab.offsetLeft -activeTab.offsetWidth +'px';
               line.style.right = right;
-              console.log('right'+right);
+
             widthL =
               activeTab.offsetLeft - tabFeatures.offsetLeft + activeTab.offsetWidth;
-              console.log('widthL'+widthL);
+
           }
-    //   widthL =
-    //     tabFeatures.offsetLeft - activeTab.offsetLeft + tabFeatures.offsetWidth;
+          else if (tabFeatures.offsetLeft = activeTab.offsetLeft){
+            widthL = activeTab.offsetWidth;
+          }
       break;
     case tabPenthouse:
-        if (tabPenthouse.offsetLeft >= activeTab.offsetLeft) {
+        if (tabPenthouse.offsetLeft > activeTab.offsetLeft) {
             line.style.right = 'auto';
-            console.log(tabPenthouse.offsetLeft  + '>' + activeTab.offsetLef);
-            // line.style.right = auto;
+
+            left = activeTab.offsetLeft - menu.offsetLeft+'px';
+        line.style.left = left;
+
             widthL =
             tabPenthouse.offsetLeft - activeTab.offsetLeft + tabPenthouse.offsetWidth;
-          } else {
+
+          } else if (tabPenthouse.offsetLeft < activeTab.offsetLeft) {
             line.style.left ='auto';
+
             right =  menu.offsetWidth - activeTab.offsetLeft -activeTab.offsetWidth +'px';
               line.style.right = right;
-              console.log('right'+right);
+
             widthL =
               activeTab.offsetLeft - tabPenthouse.offsetLeft + activeTab.offsetWidth;
-              console.log('widthL'+widthL);
+
           }
-    //   widthL =
-    //     tabPenthouse.offsetLeft -
-    //     activeTab.offsetLeft +
-    //     tabPenthouse.offsetWidth;
+          else if (tabPenthouse.offsetLeft = activeTab.offsetLeft){
+            widthL = activeTab.offsetWidth;
+          }
       break;
     case tabChoise:
-        if (tabChoise.offsetLeft >= activeTab.offsetLeft) {
+        if (tabChoise.offsetLeft > activeTab.offsetLeft) {
             line.style.right = 'auto';
-            console.log(tabChoise.offsetLeft + '>' + activeTab.offsetLef);
-            // line.style.right = auto;
+
+            left = activeTab.offsetLeft - menu.offsetLeft+'px';
+        line.style.left = left;
+
             widthL =
             tabChoise.offsetLeft - activeTab.offsetLeft + tabChoise.offsetWidth;
-          } else {
+          } else  if (tabChoise.offsetLeft < activeTab.offsetLeft){
             line.style.left ='auto';
+
                 right = menu.offsetWidth - activeTab.offsetLeft -activeTab.offsetWidth +'px';
               line.style.right = right;
-              console.log('right'+right);
+
             widthL =
               activeTab.offsetLeft - tabChoise.offsetLeft + activeTab.offsetWidth;
-              console.log('widthL'+widthL);
+
           }
-    //   widthL =
-    //     tabChoise.offsetLeft - activeTab.offsetLeft + tabChoise.offsetWidth;
+          else if (tabChoise.offsetLeft = activeTab.offsetLeft){
+            widthL = activeTab.offsetWidth;
+          }
       break;
   }
 
@@ -180,6 +204,7 @@ function hoverOut() {
   width = activeTab.offsetWidth;
   line.style.width = width - 4 + "px";
   console.log("ширина при убирании" + width);
+
 }
 
 tabAbout.addEventListener("mouseover", () => underlineWide(tabAbout));
