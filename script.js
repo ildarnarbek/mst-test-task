@@ -19,13 +19,16 @@ const about = document.querySelector(".content--about"),
   penthouse = document.querySelector(".content--penthouse"),
   choise = document.querySelector(".content--choise");
 
-const menuAbout = document.querySelector(".menu-block__item--about"),
-  menuFeatures = document.querySelector(".menu-block__item--features"),
-  menuPenthouse = document.querySelector(".menu-block__item--penthouse"),
-  menuChoise = document.querySelector(".menu-block__item--choise");
+const tabAbout = document.querySelector(".menu-block__item--about"),
+  tabFeatures = document.querySelector(".menu-block__item--features"),
+  tabPenthouse = document.querySelector(".menu-block__item--penthouse"),
+  tabChoise = document.querySelector(".menu-block__item--choise");
 
 const menuItems = document.querySelectorAll(".menu-block__item");
+const menu = document.querySelector(".menu-block");
+
 const line = document.querySelector(".line");
+// const activeTab = document.querySelector(".menu-block__item--border-bottom");
 
 function switchTab(item) {
   contentBlocks.forEach(function(i) {
@@ -34,41 +37,56 @@ function switchTab(item) {
   item.classList.remove("content-block--hide");
 }
 
-// let width = menuAbout.width()
+function getActiveTabWidth() {
+  activeTab = document.querySelector(".menu-block__item--border-bottom");
+  activeButtonWidth = activeTab.offsetWidth - 4;
+  return activeButtonWidth;
+}
+function getHoverButtonWidth(hovered) {
+  hoveredButtonWidth = hovered.offsetWidth;
+  return hoveredButtonWidth;
+}
+function getWidthForUnderline() {
+  widthForUdnerline = getActiveTabWidth() / 2;
+  return widthForUdnerline;
+}
+
+let a = getActiveTabWidth();
+let b = getWidthForUnderline();
+console.log("ширина активной кнопки" + a);
+console.log("ширина" + b);
+// let width = tabAbout.width()
 // console.log(width);
 
-function select(button) {
-  let activeButton = document.querySelector(".menu-block__item--border-bottom");
-  let activeButtonWidth = activeButton.offsetWidth;
-  let width = button.offsetWidth;
+function hoverButton() {
+  // расширить подчеркивание
+}
 
-  console.log(width);
-  console.log(activeButtonWidth);
-  //   let firstCenter = (activeButton.offsetRight - activeButton.offsetLeft)/2;
-  let firstCenter = activeButton.offsetLeft + activeButtonWidth / 2;
-  let secondCenter = button.offsetLeft + width / 2;
-  console.log(firstCenter);
-  console.log(secondCenter);
-  let marginLine = 24 + secondCenter - firstCenter + "px";
-  console.log(marginLine);
+function selectTab(tab) {
+  //  меняется маргин
+  menuMargin = tab.offsetLeft-menu.offsetLeft+2;
+  //  меняется ширина подчеркивания
+  underlineWidth =
+    //  устанавливается подчеркивание
+    console.log('маргин от меню' +menuMargin);
+    // console.log(firstCenter);
+//   console.log(secondCenter);
+//   console.log('маргин слева '+marginLeft);
 
   menuItems.forEach(function(i) {
     i.classList.remove("menu-block__item--border-bottom");
   });
-  button.classList.add("menu-block__item--border-bottom");
-  //   switch (button) {
-  //     case menuFeatures:
-  //       line.style.marginLeft = "150px";
-  //       line.style.width = "10px";
-  //       break;
-  //   }
-  let middleWidthLine = width - 4 + 'px';
-  line.style.width = middleWidthLine;
-  line.style.marginLeft = marginLine;
+  tab.classList.add("menu-block__item--border-bottom");
+
+  line.style.marginLeft = menuMargin + 'px';
+  activeTab = document.querySelector(".menu-block__item--border-bottom");
+  console.log(activeTab);
+  width = activeTab.offsetWidth - 4 + "px";
+  line.style.width = width;
 }
 
-function switchMenu(item, button) {
-  select(button);
+function switchMenu(item, tab) {
+  selectTab(tab);
   content.forEach(function(i) {
     i.classList.add("content--hide");
   });
@@ -82,56 +100,55 @@ item4.addEventListener("click", () => switchTab(contentBlock4));
 item5.addEventListener("click", () => switchTab(contentBlock5));
 item6.addEventListener("click", () => switchTab(contentBlock6));
 
-menuAbout.addEventListener("click", () => switchMenu(about, menuAbout));
-menuFeatures.addEventListener("click", () =>
-  switchMenu(features, menuFeatures)
+tabAbout.addEventListener("click", () => switchMenu(about, tabAbout));
+tabFeatures.addEventListener("click", () => switchMenu(features, tabFeatures));
+tabPenthouse.addEventListener("click", () =>
+  switchMenu(penthouse, tabPenthouse)
 );
-menuPenthouse.addEventListener("click", () =>
-  switchMenu(penthouse, menuPenthouse)
-);
-menuChoise.addEventListener("click", () => switchMenu(choise, menuChoise));
+tabChoise.addEventListener("click", () => switchMenu(choise, tabChoise));
 
-function underlineWide(item) {
-  let activeButton = document.querySelector(".menu-block__item--border-bottom");
-  let widthL = 0;
-  switch (item) {
-    case menuFeatures:
-      menuFeatures.style.color = "blueviolet";
-      //   line.style.transition = '0.5s';
-      //   let widthButton = menuFeatures.offsetWidth;
-      widthL = menuFeatures.offsetLeft - activeButton.offsetLeft + menuFeatures.offsetWidth - 4 +"px";
-        console.log(widthL);
+function underlineWide(tab) {
+  activeTab = document.querySelector(".menu-block__item--border-bottom");
+  switch (tab) {
+    case tabAbout:
+      widthL =
+        tabAbout.offsetLeft - activeTab.offsetLeft + tabAbout.offsetWidth;
       break;
-    case menuPenthouse:
-      menuPenthouse.style.color = "blueviolet";
-      //   line.style.transition = '0.5s';
-      widthL = menuPenthouse.offsetLeft - activeButton.offsetLeft + menuPenthouse.offsetWidth - 4 + "px";
+    case tabFeatures:
+      widthL =
+        tabFeatures.offsetLeft - activeTab.offsetLeft + tabFeatures.offsetWidth;
+      break;
+    case tabPenthouse:
+      widthL =
+        tabPenthouse.offsetLeft - activeTab.offsetLeft + tabPenthouse.offsetWidth;
+      break;
+    case tabChoise:
+      widthL =
+        tabChoise.offsetLeft - activeTab.offsetLeft + tabChoise.offsetWidth;
       break;
   }
 
-  line.style.width = widthL;
-}
-function underlineShort(item) {
-   let widthLineOut = 0;
-  switch (item) {
-    case menuFeatures:
-      menuFeatures.style.color = "black";
-      widthLineOut = menuFeatures.offsetWidth - 4 + 'px';
-      
-      break;
-    case menuPenthouse:
-      menuPenthouse.style.color = "black";
-      widthLineOut = menuPenthouse.offsetWidth - 4 + 'px';
-      break;
-  }
-  line.style.width = widthLineOut;
+  line.style.width = widthL - 4 + "px";
 }
 
-menuFeatures.addEventListener("mouseover", () => underlineWide(menuFeatures));
-menuFeatures.addEventListener("mouseout", () => underlineShort(menuFeatures));
+function hoverOut() {
+  activeTab = document.querySelector(".menu-block__item--border-bottom");
 
-menuPenthouse.addEventListener("mouseover", () => underlineWide(menuPenthouse));
-menuPenthouse.addEventListener("mouseout", () => underlineShort(menuPenthouse));
+  width = activeTab.offsetWidth - 4 + "px";
+  line.style.width = width;
+}
+
+tabAbout.addEventListener("mouseover", () => underlineWide(tabAbout));
+tabAbout.addEventListener("mouseout", () => hoverOut());
+
+tabFeatures.addEventListener("mouseover", () => underlineWide(tabFeatures));
+tabFeatures.addEventListener("mouseout", () => hoverOut());
+
+tabPenthouse.addEventListener("mouseover", () => underlineWide(tabPenthouse));
+tabPenthouse.addEventListener("mouseout", () => hoverOut());
+
+tabChoise.addEventListener("mouseover", () => underlineWide(tabChoise));
+tabChoise.addEventListener("mouseout", () => hoverOut());
 
 // console.log('навел')
 
