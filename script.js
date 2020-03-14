@@ -40,12 +40,12 @@ function switchTab(item) {
 
 function selectTab(tab) {
   //  меняется маргин
-  menuMargin = tab.offsetLeft - menu.offsetLeft + 2;
-
+//   menuMargin = tab.offsetLeft - menu.offsetLeft + 2;
+    left = tab.offsetLeft - menu.offsetLeft + 2;
   //  меняется ширина подчеркивания
 
   //  устанавливается подчеркивание
-  console.log("маргин от меню" + menuMargin);
+//   console.log("маргин от меню" + menuMargin);
   // console.log(firstCenter);
   //   console.log(secondCenter);
   //   console.log('маргин слева '+marginLeft);
@@ -55,7 +55,7 @@ function selectTab(tab) {
   });
   tab.classList.add("menu-block__item--border-bottom");
 
-  line.style.marginLeft = menuMargin + "px";
+  line.style.left = left + "px";
   activeTab = document.querySelector(".menu-block__item--border-bottom");
   console.log(activeTab);
   width = activeTab.offsetWidth - 4 + "px";
@@ -97,11 +97,12 @@ function underlineWide(tab) {
   switch (tab) {
     case tabAbout:
       if (tabAbout.offsetLeft >= activeTab.offsetLeft) {
-        // line.style.right = auto;
+        line.style.right = 'auto';
         widthL =
           tabAbout.offsetLeft - activeTab.offsetLeft + tabAbout.offsetWidth;
       } else {
-          right = 23.5 + activeTab.offsetWidth-activeTab.offsetWidth +'px';
+          line.style.left ='auto';
+          right =  menu.offsetWidth - activeTab.offsetLeft -activeTab.offsetWidth +'px';
           line.style.right = right;
           console.log('right'+right);
         widthL =
@@ -111,12 +112,14 @@ function underlineWide(tab) {
       break;
     case tabFeatures:
         if (tabFeatures.offsetLeft >= activeTab.offsetLeft) {
+            line.style.right = 'auto';
             console.log(tabFeatures.offsetLeft   + '>' + activeTab.offsetLef);
             // line.style.right = '-50px';
             widthL =
             tabFeatures.offsetLeft - activeTab.offsetLeft + tabFeatures.offsetWidth;
           } else {
-              right = 23.5 + activeTab.offsetWidth-activeTab.offsetWidth +'px';
+            line.style.left ='auto';
+            right = menu.offsetWidth - activeTab.offsetLeft -activeTab.offsetWidth +'px';
               line.style.right = right;
               console.log('right'+right);
             widthL =
@@ -128,12 +131,14 @@ function underlineWide(tab) {
       break;
     case tabPenthouse:
         if (tabPenthouse.offsetLeft >= activeTab.offsetLeft) {
+            line.style.right = 'auto';
             console.log(tabPenthouse.offsetLeft  + '>' + activeTab.offsetLef);
             // line.style.right = auto;
             widthL =
             tabPenthouse.offsetLeft - activeTab.offsetLeft + tabPenthouse.offsetWidth;
           } else {
-              right = 23.5 + activeTab.offsetWidth-activeTab.offsetWidth +'px';
+            line.style.left ='auto';
+            right =  menu.offsetWidth - activeTab.offsetLeft -activeTab.offsetWidth +'px';
               line.style.right = right;
               console.log('right'+right);
             widthL =
@@ -147,12 +152,14 @@ function underlineWide(tab) {
       break;
     case tabChoise:
         if (tabChoise.offsetLeft >= activeTab.offsetLeft) {
+            line.style.right = 'auto';
             console.log(tabChoise.offsetLeft + '>' + activeTab.offsetLef);
             // line.style.right = auto;
             widthL =
             tabChoise.offsetLeft - activeTab.offsetLeft + tabChoise.offsetWidth;
           } else {
-              right = 23.5 + activeTab.offsetWidth-activeTab.offsetWidth +'px';
+            line.style.left ='auto';
+                right = menu.offsetWidth - activeTab.offsetLeft -activeTab.offsetWidth +'px';
               line.style.right = right;
               console.log('right'+right);
             widthL =
