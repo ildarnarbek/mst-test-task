@@ -37,30 +37,6 @@ function switchTab(item) {
   item.classList.remove("content-block--hide");
 }
 
-function getActiveTabWidth() {
-  activeTab = document.querySelector(".menu-block__item--border-bottom");
-  activeButtonWidth = activeTab.offsetWidth - 4;
-  return activeButtonWidth;
-}
-function getHoverButtonWidth(hovered) {
-  hoveredButtonWidth = hovered.offsetWidth;
-  return hoveredButtonWidth;
-}
-function getWidthForUnderline() {
-  widthForUdnerline = getActiveTabWidth() / 2;
-  return widthForUdnerline;
-}
-
-let a = getActiveTabWidth();
-let b = getWidthForUnderline();
-console.log("ширина активной кнопки" + a);
-console.log("ширина" + b);
-// let width = tabAbout.width()
-// console.log(width);
-
-function hoverButton() {
-  // расширить подчеркивание
-}
 
 function selectTab(tab) {
   //  меняется маргин
@@ -133,7 +109,6 @@ function underlineWide(tab) {
 
 function hoverOut() {
   activeTab = document.querySelector(".menu-block__item--border-bottom");
-
   width = activeTab.offsetWidth - 4 + "px";
   line.style.width = width;
 }
@@ -150,14 +125,3 @@ tabPenthouse.addEventListener("mouseout", () => hoverOut());
 tabChoise.addEventListener("mouseover", () => underlineWide(tabChoise));
 tabChoise.addEventListener("mouseout", () => hoverOut());
 
-// console.log('навел')
-
-// item4.addEventListener(click, () => {
-//     console.log('клик');
-// })
-// item5.addEventListener(click, () => {
-//     console.log('клик');
-// })
-// item6.addEventListener(click, () => {
-//     console.log('клик');
-// })
