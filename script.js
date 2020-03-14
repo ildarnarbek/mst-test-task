@@ -27,6 +27,7 @@ const tabAbout = document.querySelector(".menu-block__item--about"),
 const menuItems = document.querySelectorAll(".menu-block__item");
 const menu = document.querySelector(".menu-block");
 
+
 const line = document.querySelector(".line");
 // const activeTab = document.querySelector(".menu-block__item--border-bottom");
 
@@ -37,24 +38,24 @@ function switchTab(item) {
   item.classList.remove("content-block--hide");
 }
 
-
 function selectTab(tab) {
   //  меняется маргин
-  menuMargin = tab.offsetLeft-menu.offsetLeft+2;
+  menuMargin = tab.offsetLeft - menu.offsetLeft + 2;
+
   //  меняется ширина подчеркивания
-  underlineWidth =
-    //  устанавливается подчеркивание
-    console.log('маргин от меню' +menuMargin);
-    // console.log(firstCenter);
-//   console.log(secondCenter);
-//   console.log('маргин слева '+marginLeft);
+
+  //  устанавливается подчеркивание
+  console.log("маргин от меню" + menuMargin);
+  // console.log(firstCenter);
+  //   console.log(secondCenter);
+  //   console.log('маргин слева '+marginLeft);
 
   menuItems.forEach(function(i) {
     i.classList.remove("menu-block__item--border-bottom");
   });
   tab.classList.add("menu-block__item--border-bottom");
 
-  line.style.marginLeft = menuMargin + 'px';
+  line.style.marginLeft = menuMargin + "px";
   activeTab = document.querySelector(".menu-block__item--border-bottom");
   console.log(activeTab);
   width = activeTab.offsetWidth - 4 + "px";
@@ -67,6 +68,7 @@ function switchMenu(item, tab) {
     i.classList.add("content--hide");
   });
   item.classList.remove("content--hide");
+//   line.classList.add('left-location');
 }
 
 item1.addEventListener("click", () => switchTab(contentBlock1));
@@ -84,35 +86,93 @@ tabPenthouse.addEventListener("click", () =>
 tabChoise.addEventListener("click", () => switchMenu(choise, tabChoise));
 
 function underlineWide(tab) {
+  
   activeTab = document.querySelector(".menu-block__item--border-bottom");
+
+  console.log('about '+tabAbout.offsetLeft   + '>' + activeTab.offsetLeft);
+  console.log('Features '+tabFeatures.offsetLeft   + '>' + activeTab.offsetLeft);
+  console.log('Penthouse'+tabPenthouse.offsetLeft  + '>' + activeTab.offsetLeft);
+  console.log('Choise '+ tabChoise.offsetLeft + '>' + activeTab.offsetLeft);
+
   switch (tab) {
     case tabAbout:
-      widthL =
-        tabAbout.offsetLeft - activeTab.offsetLeft + tabAbout.offsetWidth;
+      if (tabAbout.offsetLeft >= activeTab.offsetLeft) {
+        // line.style.right = auto;
+        widthL =
+          tabAbout.offsetLeft - activeTab.offsetLeft + tabAbout.offsetWidth;
+      } else {
+          right = 23.5 + activeTab.offsetWidth-activeTab.offsetWidth +'px';
+          line.style.right = right;
+          console.log('right'+right);
+        widthL =
+          activeTab.offsetLeft - tabAbout.offsetLeft + activeTab.offsetWidth;
+          console.log('widthL'+widthL);
+      }
       break;
     case tabFeatures:
-      widthL =
-        tabFeatures.offsetLeft - activeTab.offsetLeft + tabFeatures.offsetWidth;
+        if (tabFeatures.offsetLeft >= activeTab.offsetLeft) {
+            console.log(tabFeatures.offsetLeft   + '>' + activeTab.offsetLef);
+            // line.style.right = '-50px';
+            widthL =
+            tabFeatures.offsetLeft - activeTab.offsetLeft + tabFeatures.offsetWidth;
+          } else {
+              right = 23.5 + activeTab.offsetWidth-activeTab.offsetWidth +'px';
+              line.style.right = right;
+              console.log('right'+right);
+            widthL =
+              activeTab.offsetLeft - tabFeatures.offsetLeft + activeTab.offsetWidth;
+              console.log('widthL'+widthL);
+          }
+    //   widthL =
+    //     tabFeatures.offsetLeft - activeTab.offsetLeft + tabFeatures.offsetWidth;
       break;
     case tabPenthouse:
-      widthL =
-        tabPenthouse.offsetLeft - activeTab.offsetLeft + tabPenthouse.offsetWidth;
+        if (tabPenthouse.offsetLeft >= activeTab.offsetLeft) {
+            console.log(tabPenthouse.offsetLeft  + '>' + activeTab.offsetLef);
+            // line.style.right = auto;
+            widthL =
+            tabPenthouse.offsetLeft - activeTab.offsetLeft + tabPenthouse.offsetWidth;
+          } else {
+              right = 23.5 + activeTab.offsetWidth-activeTab.offsetWidth +'px';
+              line.style.right = right;
+              console.log('right'+right);
+            widthL =
+              activeTab.offsetLeft - tabPenthouse.offsetLeft + activeTab.offsetWidth;
+              console.log('widthL'+widthL);
+          }
+    //   widthL =
+    //     tabPenthouse.offsetLeft -
+    //     activeTab.offsetLeft +
+    //     tabPenthouse.offsetWidth;
       break;
     case tabChoise:
-      widthL =
-        tabChoise.offsetLeft - activeTab.offsetLeft + tabChoise.offsetWidth;
+        if (tabChoise.offsetLeft >= activeTab.offsetLeft) {
+            console.log(tabChoise.offsetLeft + '>' + activeTab.offsetLef);
+            // line.style.right = auto;
+            widthL =
+            tabChoise.offsetLeft - activeTab.offsetLeft + tabChoise.offsetWidth;
+          } else {
+              right = 23.5 + activeTab.offsetWidth-activeTab.offsetWidth +'px';
+              line.style.right = right;
+              console.log('right'+right);
+            widthL =
+              activeTab.offsetLeft - tabChoise.offsetLeft + activeTab.offsetWidth;
+              console.log('widthL'+widthL);
+          }
+    //   widthL =
+    //     tabChoise.offsetLeft - activeTab.offsetLeft + tabChoise.offsetWidth;
       break;
   }
 
   line.style.width = widthL - 4 + "px";
-  console.log('ширина при наведении'+widthL);
+  console.log("ширина при наведении" + widthL);
 }
 
 function hoverOut() {
   activeTab = document.querySelector(".menu-block__item--border-bottom");
-  width = activeTab.offsetWidth - 4 + "px";
-  line.style.width = width;
-  console.log('ширина при убирании'+width);
+  width = activeTab.offsetWidth;
+  line.style.width = width - 4 + "px";
+  console.log("ширина при убирании" + width);
 }
 
 tabAbout.addEventListener("mouseover", () => underlineWide(tabAbout));
@@ -126,4 +186,3 @@ tabPenthouse.addEventListener("mouseout", () => hoverOut());
 
 tabChoise.addEventListener("mouseover", () => underlineWide(tabChoise));
 tabChoise.addEventListener("mouseout", () => hoverOut());
-

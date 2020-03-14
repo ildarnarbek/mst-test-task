@@ -104,16 +104,22 @@
     /* width: 100%; */
     color: #e74c3c;
 }
-.line {
+.header-container__block--row{
     position: relative;
-    top:-4px;
+}
+.line {
+    /* position: relative; */
+    top: 34px;
     width:102px; 
     height:4px;
     /* background-color: #d88f5e; */
     background-color: royalblue;
     margin-left: 24px;
     transition: 0.5s;
+    position: absolute;
 }
+
+
 /* .menu-block__item--about:hover header-container__block{
 
     border: 5px solid red;
