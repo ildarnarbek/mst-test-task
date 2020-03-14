@@ -105,12 +105,14 @@ function underlineWide(tab) {
   }
 
   line.style.width = widthL - 4 + "px";
+  console.log('ширина при наведении'+widthL);
 }
 
 function hoverOut() {
   activeTab = document.querySelector(".menu-block__item--border-bottom");
   width = activeTab.offsetWidth - 4 + "px";
   line.style.width = width;
+  console.log('ширина при убирании'+width);
 }
 
 tabAbout.addEventListener("mouseover", () => underlineWide(tabAbout));
