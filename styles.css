@@ -100,10 +100,7 @@
     background-color: #d88f5e;
     transition: width .3s ease-in-out;
 } */
-.menu-block__item--about:hover{
-    /* width: 100%; */
-    color: #e74c3c;
-}
+
 .header-container__block--row{
     position: relative;
 }
@@ -113,13 +110,8 @@
     height:4px;
     background-color: #D88F5E;
     left: 24px;
-    transition: 0.5s;
+    transition: 0.7s;
     position: absolute;
-}
-
-
-.menu-block__item--features:hover ~ .line{
-    width: 240px;
 }
 
 

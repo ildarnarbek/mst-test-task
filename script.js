@@ -27,7 +27,6 @@ const tabAbout = document.querySelector(".menu-block__item--about"),
 const menuItems = document.querySelectorAll(".menu-block__item");
 const menu = document.querySelector(".menu-block");
 
-
 const line = document.querySelector(".line");
 // const activeTab = document.querySelector(".menu-block__item--border-bottom");
 
@@ -39,7 +38,7 @@ function switchTab(item) {
 }
 
 function selectTab(tab) {
-    left = tab.offsetLeft - menu.offsetLeft + 2;
+  left = tab.offsetLeft - menu.offsetLeft + 2;
   menuItems.forEach(function(i) {
     i.classList.remove("menu-block__item--border-bottom");
   });
@@ -58,7 +57,7 @@ function switchMenu(item, tab) {
     i.classList.add("content--hide");
   });
   item.classList.remove("content--hide");
-//   line.classList.add('left-location');
+  //   line.classList.add('left-location');
 }
 
 item1.addEventListener("click", () => switchTab(contentBlock1));
@@ -76,112 +75,90 @@ tabPenthouse.addEventListener("click", () =>
 tabChoise.addEventListener("click", () => switchMenu(choise, tabChoise));
 
 function underlineWide(tab) {
-  
   activeTab = document.querySelector(".menu-block__item--border-bottom");
+  left = activeTab.offsetLeft - menu.offsetLeft + "px";
+  right =
+  menu.offsetWidth -
+  activeTab.offsetLeft -
+  activeTab.offsetWidth +
+  "px";
 
-  console.log('about '+tabAbout.offsetLeft   + '>' + activeTab.offsetLeft);
-  console.log('Features '+tabFeatures.offsetLeft   + '>' + activeTab.offsetLeft);
-  console.log('Penthouse'+tabPenthouse.offsetLeft  + '>' + activeTab.offsetLeft);
-  console.log('Choise '+ tabChoise.offsetLeft + '>' + activeTab.offsetLeft);
 
   switch (tab) {
     case tabAbout:
-        
       if (tabAbout.offsetLeft > activeTab.offsetLeft) {
-          console.log('>');
-        line.style.right = 'auto';
-
-        left = activeTab.offsetLeft - menu.offsetLeft+'px';
+        line.style.right = "auto";
         line.style.left = left;
 
         widthL =
           tabAbout.offsetLeft - activeTab.offsetLeft + tabAbout.offsetWidth;
       } else if (tabAbout.offsetLeft < activeTab.offsetLeft) {
-          line.style.left ='auto';
-
-          console.log('<');
-
-          right =  menu.offsetWidth - activeTab.offsetLeft -activeTab.offsetWidth +'px';
-          line.style.right = right;
+        line.style.left = "auto";
+        line.style.right = right;
 
         widthL =
           activeTab.offsetLeft - tabAbout.offsetLeft + activeTab.offsetWidth;
-      }
-      else if (tabAbout.offsetLeft = activeTab.offsetLeft){
-        console.log('=');
+      } else if ((tabAbout.offsetLeft = activeTab.offsetLeft)) {
+        console.log("=");
         widthL = activeTab.offsetWidth;
       }
       break;
     case tabFeatures:
-        if (tabFeatures.offsetLeft > activeTab.offsetLeft) {
-            line.style.right = 'auto';
-
-            left = activeTab.offsetLeft - menu.offsetLeft+'px';
+      if (tabFeatures.offsetLeft > activeTab.offsetLeft) {
+        line.style.right = "auto";
         line.style.left = left;
 
-            widthL =
-            tabFeatures.offsetLeft - activeTab.offsetLeft + tabFeatures.offsetWidth;
+        widthL =
+          tabFeatures.offsetLeft -
+          activeTab.offsetLeft +
+          tabFeatures.offsetWidth;
+      } else if (tabFeatures.offsetLeft < activeTab.offsetLeft) {
+        line.style.left = "auto";
+        line.style.right = right;
 
-          } else if (tabFeatures.offsetLeft < activeTab.offsetLeft) {
-            line.style.left ='auto';
-
-            right = menu.offsetWidth - activeTab.offsetLeft -activeTab.offsetWidth +'px';
-              line.style.right = right;
-
-            widthL =
-              activeTab.offsetLeft - tabFeatures.offsetLeft + activeTab.offsetWidth;
-
-          }
-          else if (tabFeatures.offsetLeft = activeTab.offsetLeft){
-            widthL = activeTab.offsetWidth;
-          }
+        widthL =
+          activeTab.offsetLeft - tabFeatures.offsetLeft + activeTab.offsetWidth;
+      } else if ((tabFeatures.offsetLeft = activeTab.offsetLeft)) {
+        widthL = activeTab.offsetWidth;
+      }
       break;
     case tabPenthouse:
-        if (tabPenthouse.offsetLeft > activeTab.offsetLeft) {
-            line.style.right = 'auto';
-
-            left = activeTab.offsetLeft - menu.offsetLeft+'px';
+      if (tabPenthouse.offsetLeft > activeTab.offsetLeft) {
+        line.style.right = "auto";
         line.style.left = left;
 
-            widthL =
-            tabPenthouse.offsetLeft - activeTab.offsetLeft + tabPenthouse.offsetWidth;
+        widthL =
+          tabPenthouse.offsetLeft -
+          activeTab.offsetLeft +
+          tabPenthouse.offsetWidth;
+      } else if (tabPenthouse.offsetLeft < activeTab.offsetLeft) {
+        line.style.left = "auto";
+        line.style.right = right;
 
-          } else if (tabPenthouse.offsetLeft < activeTab.offsetLeft) {
-            line.style.left ='auto';
-
-            right =  menu.offsetWidth - activeTab.offsetLeft -activeTab.offsetWidth +'px';
-              line.style.right = right;
-
-            widthL =
-              activeTab.offsetLeft - tabPenthouse.offsetLeft + activeTab.offsetWidth;
-
-          }
-          else if (tabPenthouse.offsetLeft = activeTab.offsetLeft){
-            widthL = activeTab.offsetWidth;
-          }
+        widthL =
+          activeTab.offsetLeft -
+          tabPenthouse.offsetLeft +
+          activeTab.offsetWidth;
+      } else if ((tabPenthouse.offsetLeft = activeTab.offsetLeft)) {
+        widthL = activeTab.offsetWidth;
+      }
       break;
     case tabChoise:
-        if (tabChoise.offsetLeft > activeTab.offsetLeft) {
-            line.style.right = 'auto';
-
-            left = activeTab.offsetLeft - menu.offsetLeft+'px';
+      if (tabChoise.offsetLeft > activeTab.offsetLeft) {
+        line.style.right = "auto";
         line.style.left = left;
 
-            widthL =
-            tabChoise.offsetLeft - activeTab.offsetLeft + tabChoise.offsetWidth;
-          } else  if (tabChoise.offsetLeft < activeTab.offsetLeft){
-            line.style.left ='auto';
+        widthL =
+          tabChoise.offsetLeft - activeTab.offsetLeft + tabChoise.offsetWidth;
+      } else if (tabChoise.offsetLeft < activeTab.offsetLeft) {
+        line.style.left = "auto";
+        line.style.right = right;
 
-                right = menu.offsetWidth - activeTab.offsetLeft -activeTab.offsetWidth +'px';
-              line.style.right = right;
-
-            widthL =
-              activeTab.offsetLeft - tabChoise.offsetLeft + activeTab.offsetWidth;
-
-          }
-          else if (tabChoise.offsetLeft = activeTab.offsetLeft){
-            widthL = activeTab.offsetWidth;
-          }
+        widthL =
+          activeTab.offsetLeft - tabChoise.offsetLeft + activeTab.offsetWidth;
+      } else if ((tabChoise.offsetLeft = activeTab.offsetLeft)) {
+        widthL = activeTab.offsetWidth;
+      }
       break;
   }
 
@@ -194,7 +171,6 @@ function hoverOut() {
   width = activeTab.offsetWidth;
   line.style.width = width - 4 + "px";
   console.log("ширина при убирании" + width);
-
 }
 
 tabAbout.addEventListener("mouseover", () => underlineWide(tabAbout));
