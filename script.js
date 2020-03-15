@@ -25,16 +25,36 @@ const tabAbout = document.querySelector(".menu-block__item--about"),
   tabChoise = document.querySelector(".menu-block__item--choise");
 
 const menuItems = document.querySelectorAll(".menu-block__item");
+// переделать меню на таб
 const menu = document.querySelector(".menu-block");
 
 const line = document.querySelector(".line");
+
+const menuHover = document.querySelector(".nav-bar__item--background-hover");
+const allMenuItems = document.querySelectorAll(".nav-bar__item ");
+const allMenuBackgrounds = document.querySelectorAll(
+  ".nav-bar__item--background"
+);
 // const activeTab = document.querySelector(".menu-block__item--border-bottom");
 
-function switchTab(item) {
+const lc = item1.firstElementChild;
+console.log(allMenuBackgrounds);
+
+function switchMenu(contant, item) {
   contentBlocks.forEach(function(i) {
     i.classList.add("content-block--hide");
   });
-  item.classList.remove("content-block--hide");
+  contant.classList.remove("content-block--hide");
+
+  allMenuItems.forEach(function(i) {
+    i.classList.remove("nav-bar__item--selected");
+  });
+  item.classList.add("nav-bar__item--selected");
+
+  allMenuBackgrounds.forEach(function(i) {
+    i.classList.remove("nav-bar__item--background-hover");
+  });
+  item.firstElementChild.classList.add("nav-bar__item--background-hover");
 }
 
 function selectTab(tab) {
@@ -44,41 +64,39 @@ function selectTab(tab) {
   tab.classList.add("menu-block__item--border-bottom");
 
   activeTab = document.querySelector(".menu-block__item--border-bottom");
-
   width = activeTab.offsetWidth - 4 + "px";
   line.style.width = width;
 }
 
-function switchMenu(item, tab) {
+function switchTab(item, tab) {
   selectTab(tab);
   content.forEach(function(i) {
     i.classList.add("content--hide");
   });
   item.classList.remove("content--hide");
-  
+
   right =
     menu.offsetWidth - activeTab.offsetLeft - activeTab.offsetWidth + "px";
   line.style.right = right;
   left = activeTab.offsetLeft - menu.offsetLeft + "px";
-    line.style.left = left;
-
+  line.style.left = left;
 }
 
-item1.addEventListener("click", () => switchTab(contentBlock1));
-item2.addEventListener("click", () => switchTab(contentBlock2));
-item3.addEventListener("click", () => switchTab(contentBlock3));
-item4.addEventListener("click", () => switchTab(contentBlock4));
-item5.addEventListener("click", () => switchTab(contentBlock5));
-item6.addEventListener("click", () => switchTab(contentBlock6));
+item1.addEventListener("click", () => switchMenu(contentBlock1, item1));
+item2.addEventListener("click", () => switchMenu(contentBlock2, item2));
+item3.addEventListener("click", () => switchMenu(contentBlock3, item3));
+item4.addEventListener("click", () => switchMenu(contentBlock4, item4));
+item5.addEventListener("click", () => switchMenu(contentBlock5, item5));
+item6.addEventListener("click", () => switchMenu(contentBlock6, item6));
 
-tabAbout.addEventListener("click", () => switchMenu(about, tabAbout));
-tabFeatures.addEventListener("click", () => switchMenu(features, tabFeatures));
+tabAbout.addEventListener("click", () => switchTab(about, tabAbout));
+tabFeatures.addEventListener("click", () => switchTab(features, tabFeatures));
 tabPenthouse.addEventListener("click", () =>
-  switchMenu(penthouse, tabPenthouse)
+  switchTab(penthouse, tabPenthouse)
 );
-tabChoise.addEventListener("click", () => switchMenu(choise, tabChoise));
+tabChoise.addEventListener("click", () => switchTab(choise, tabChoise));
 
-function underlineWide(tab) {
+function hoverOn(tab) {
   activeTab = document.querySelector(".menu-block__item--border-bottom");
 
   if (tab.offsetLeft > activeTab.offsetLeft) {
@@ -95,9 +113,7 @@ function underlineWide(tab) {
   } else if ((tab.offsetLeft = activeTab.offsetLeft)) {
     widthLine = activeTab.offsetWidth;
   }
-
   line.style.width = widthLine + "px";
-  console.log("ширина при наведении" + widthLine);
 }
 
 function hoverOut() {
@@ -107,14 +123,14 @@ function hoverOut() {
   console.log("ширина при убирании" + width);
 }
 
-tabAbout.addEventListener("mouseover", () => underlineWide(tabAbout));
+tabAbout.addEventListener("mouseover", () => hoverOn(tabAbout));
 tabAbout.addEventListener("mouseout", () => hoverOut());
 
-tabFeatures.addEventListener("mouseover", () => underlineWide(tabFeatures));
+tabFeatures.addEventListener("mouseover", () => hoverOn(tabFeatures));
 tabFeatures.addEventListener("mouseout", () => hoverOut());
 
-tabPenthouse.addEventListener("mouseover", () => underlineWide(tabPenthouse));
+tabPenthouse.addEventListener("mouseover", () => hoverOn(tabPenthouse));
 tabPenthouse.addEventListener("mouseout", () => hoverOut());
 
-tabChoise.addEventListener("mouseover", () => underlineWide(tabChoise));
+tabChoise.addEventListener("mouseover", () => hoverOn(tabChoise));
 tabChoise.addEventListener("mouseout", () => hoverOut());

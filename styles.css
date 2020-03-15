@@ -168,16 +168,42 @@
   font-size: 13px;
   line-height: 15px;
   color: #505050;
-  padding-bottom: 3.8%;
-}
-.nav-bar__item--hover {
-  background: #ebd8cc;
+  padding-bottom: 32px;
   position: relative;
-  left: 4px;
-  top: 5px;
-  padding-left: 4px;
-  padding-right: 4px;
+  z-index: 4;
+
 }
+.nav-bar__item--background {
+  width: 0%;
+  height: 9px;
+  background: #EBD8CC;
+  position: absolute;
+  left: -4px;
+  top: 8px;
+  z-index: -1;
+}
+.nav-bar__item:hover .nav-bar__item--background {
+    width: 100%;
+    transition: 0.5s;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+.nav-bar__item--background-hover{
+    width: 100%;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.nav-bar__item--selected{
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+/* .nav-bar__item--text{
+    position: absolute;
+    z-index: 1;
+} */
 .content-block {
   width: 84.22222%;
   max-height: 840px;
