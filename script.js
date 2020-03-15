@@ -39,17 +39,7 @@ function switchTab(item) {
 }
 
 function selectTab(tab) {
-  //  меняется маргин
-//   menuMargin = tab.offsetLeft - menu.offsetLeft + 2;
     left = tab.offsetLeft - menu.offsetLeft + 2;
-  //  меняется ширина подчеркивания
-
-  //  устанавливается подчеркивание
-//   console.log("маргин от меню" + menuMargin);
-  // console.log(firstCenter);
-  //   console.log(secondCenter);
-  //   console.log('маргин слева '+marginLeft);
-
   menuItems.forEach(function(i) {
     i.classList.remove("menu-block__item--border-bottom");
   });
@@ -57,7 +47,7 @@ function selectTab(tab) {
 
   line.style.left = left + "px";
   activeTab = document.querySelector(".menu-block__item--border-bottom");
-  console.log(activeTab);
+
   width = activeTab.offsetWidth - 4 + "px";
   line.style.width = width;
 }

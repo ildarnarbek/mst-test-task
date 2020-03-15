@@ -74,7 +74,7 @@
  cursor: pointer;
 }
 .menu-block__item--border-bottom {
-    border-bottom: 4px solid red;
+    border-bottom: 4px solid #D88F5E;
 }
 
 .header-container__block--row{
@@ -108,23 +108,16 @@
     position: relative;
 }
 .line {
-    /* position: relative; */
     top: 34px;
     width:102px; 
     height:4px;
-    /* background-color: #d88f5e; */
-    background-color: royalblue;
-    /* margin-left: 24px; */
+    background-color: #D88F5E;
     left: 24px;
     transition: 0.5s;
     position: absolute;
 }
 
 
-/* .menu-block__item--about:hover header-container__block{
-
-    border: 5px solid red;
-} */
 .menu-block__item--features:hover ~ .line{
     width: 240px;
 }
