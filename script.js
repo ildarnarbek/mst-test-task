@@ -38,17 +38,11 @@ function switchTab(item) {
 }
 
 function selectTab(tab) {
-
-// left = activeTab.offsetLeft - menu.offsetLeft + "px";
-//   right =
-//     menu.offsetWidth - activeTab.offsetLeft - activeTab.offsetWidth + "px";
   menuItems.forEach(function(i) {
     i.classList.remove("menu-block__item--border-bottom");
   });
   tab.classList.add("menu-block__item--border-bottom");
 
-//   line.style.left = left;
-//   line.style.right = right;
   activeTab = document.querySelector(".menu-block__item--border-bottom");
 
   width = activeTab.offsetWidth - 4 + "px";
@@ -68,7 +62,6 @@ function switchMenu(item, tab) {
   left = activeTab.offsetLeft - menu.offsetLeft + "px";
     line.style.left = left;
 
-  //   line.classList.add('left-location');
 }
 
 item1.addEventListener("click", () => switchTab(contentBlock1));
@@ -89,92 +82,22 @@ function underlineWide(tab) {
   activeTab = document.querySelector(".menu-block__item--border-bottom");
 
   if (tab.offsetLeft > activeTab.offsetLeft) {
-    widthL = tab.offsetLeft - activeTab.offsetLeft + tab.offsetWidth;
+    widthLine = tab.offsetLeft - activeTab.offsetLeft + tab.offsetWidth;
     left = activeTab.offsetLeft - menu.offsetLeft + "px";
     line.style.left = left;
     line.style.right = "auto";
   } else if (tab.offsetLeft < activeTab.offsetLeft) {
-    widthL = activeTab.offsetLeft - tab.offsetLeft + activeTab.offsetWidth;
+    widthLine = activeTab.offsetLeft - tab.offsetLeft + activeTab.offsetWidth;
     right =
       menu.offsetWidth - activeTab.offsetLeft - activeTab.offsetWidth + "px";
     line.style.left = "auto";
     line.style.right = right;
   } else if ((tab.offsetLeft = activeTab.offsetLeft)) {
-    console.log("=");
-    widthL = activeTab.offsetWidth;
+    widthLine = activeTab.offsetWidth;
   }
 
-  //   if (tab.offsetLeft > activeTab.offsetLeft) {
-  //     line.style.right = "auto";
-  //     line.style.left = left;
-  //     widthL = widthToRight;
-  //   } else if (tab.offsetLeft < activeTab.offsetLeft) {
-  //     line.style.left = "auto";
-  //     line.style.right = right;
-  //     widthL = widthToLeft;
-  //   } else if ((tab.offsetLeft = activeTab.offsetLeft)) {
-  //     console.log("=");
-  //     widthL = activeTab.offsetWidth;
-  //   }
-
-  //   switch (tab) {
-  //     case tabAbout:
-  //       if (tabAbout.offsetLeft > activeTab.offsetLeft) {
-  //         line.style.right = "auto";
-  //         line.style.left = left;
-  //         widthL = widthToRight;
-  //       } else if (tabAbout.offsetLeft < activeTab.offsetLeft) {
-  //         line.style.left = "auto";
-  //         line.style.right = right;
-  //         widthL = widthToLeft;
-  //       } else if ((tabAbout.offsetLeft = activeTab.offsetLeft)) {
-  //         console.log("=");
-  //         widthL = activeTab.offsetWidth;
-  //       }
-  //       break;
-  //     case tabFeatures:
-  //       if (tabFeatures.offsetLeft > activeTab.offsetLeft) {
-  //         line.style.right = "auto";
-  //         line.style.left = left;
-  //         widthL = widthToRight;
-  //       } else if (tabFeatures.offsetLeft < activeTab.offsetLeft) {
-  //         line.style.left = "auto";
-  //         line.style.right = right;
-  //         widthL = widthToLeft;
-  //       } else if ((tabFeatures.offsetLeft = activeTab.offsetLeft)) {
-  //         widthL = activeTab.offsetWidth;
-  //       }
-  //       break;
-  //     case tabPenthouse:
-  //       if (tabPenthouse.offsetLeft > activeTab.offsetLeft) {
-  //         line.style.right = "auto";
-  //         line.style.left = left;
-  //         widthL = widthToRight;
-  //       } else if (tabPenthouse.offsetLeft < activeTab.offsetLeft) {
-  //         line.style.left = "auto";
-  //         line.style.right = right;
-  //         widthL = widthToLeft;
-  //       } else if ((tabPenthouse.offsetLeft = activeTab.offsetLeft)) {
-  //         widthL = activeTab.offsetWidth;
-  //       }
-  //       break;
-  //     case tabChoise:
-  //       if (tabChoise.offsetLeft > activeTab.offsetLeft) {
-  //         line.style.right = "auto";
-  //         line.style.left = left;
-  //         widthL = widthToRight;
-  //       } else if (tabChoise.offsetLeft < activeTab.offsetLeft) {
-  //         line.style.left = "auto";
-  //         line.style.right = right;
-  //         widthL = widthToLeft;
-  //       } else if ((tabChoise.offsetLeft = activeTab.offsetLeft)) {
-  //         widthL = activeTab.offsetWidth;
-  //       }
-  //       break;
-  //   }
-
-  line.style.width = widthL - 4 + "px";
-  console.log("ширина при наведении" + widthL);
+  line.style.width = widthLine + "px";
+  console.log("ширина при наведении" + widthLine);
 }
 
 function hoverOut() {
