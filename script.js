@@ -13,6 +13,10 @@ const description1 = document.querySelector(".description-container--1"),
   description5 = document.querySelector(".description-container--5"),
   description6 = document.querySelector(".description-container--6");
 
+const numberOfDescription = document.querySelector(
+  ".description-container__num-block"
+);
+
 const content = document.querySelectorAll(".content");
 const about = document.querySelector(".content--about"),
   features = document.querySelector(".content--features"),
@@ -45,11 +49,9 @@ const Pic5 = document.querySelector(".pic-block--5");
 const Pic6 = document.querySelector(".pic-block--6");
 // const activeTab = document.querySelector(".menu-block__item--border-bottom");
 
-function switchMenu(item, pic, disc) {
-  //   contentBlocks.forEach(function(i) {
-  //     i.classList.add("content-block--hide");
-  //   });
-  //   contant.classList.remove("content-block--hide");
+function switchMenu(item, pic, disc, num) {
+  numberOfDescription.innerHTML = num + "/6";
+
   let previous = document.querySelector(".nav-bar__item--selected");
   selectMenuItem(item);
   let current = document.querySelector(".nav-bar__item--selected");
@@ -115,7 +117,7 @@ function selectTab(tab) {
   tab.classList.add("menu-block__item--border-bottom");
 
   activeTab = document.querySelector(".menu-block__item--border-bottom");
-  width = activeTab.offsetWidth + 13 + "px";
+  width = activeTab.offsetWidth + "px";
   line.style.width = width;
 }
 
@@ -133,12 +135,12 @@ function switchTab(item, tab) {
   line.style.left = left;
 }
 
-item1.addEventListener("click", () => switchMenu(item1, Pic1, description1));
-item2.addEventListener("click", () => switchMenu(item2, Pic2, description2));
-item3.addEventListener("click", () => switchMenu(item3, Pic3, description3));
-item4.addEventListener("click", () => switchMenu(item4, Pic4, description4));
-item5.addEventListener("click", () => switchMenu(item5, Pic5, description5));
-item6.addEventListener("click", () => switchMenu(item6, Pic6, description6));
+item1.addEventListener("click", () => switchMenu(item1, Pic1, description1, 1));
+item2.addEventListener("click", () => switchMenu(item2, Pic2, description2, 2));
+item3.addEventListener("click", () => switchMenu(item3, Pic3, description3, 3));
+item4.addEventListener("click", () => switchMenu(item4, Pic4, description4, 4));
+item5.addEventListener("click", () => switchMenu(item5, Pic5, description5, 5));
+item6.addEventListener("click", () => switchMenu(item6, Pic6, description6, 6));
 
 tabAbout.addEventListener("click", () => switchTab(about, tabAbout));
 tabFeatures.addEventListener("click", () => switchTab(features, tabFeatures));
@@ -170,7 +172,7 @@ function hoverOn(tab) {
 function hoverOut() {
   activeTab = document.querySelector(".menu-block__item--border-bottom");
   width = activeTab.offsetWidth;
-  line.style.width = width - 4 + "px";
+  line.style.width = width + "px";
   console.log("ширина при убирании" + width);
 }
 
