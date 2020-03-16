@@ -1,3 +1,4 @@
+(function(){
 const content = document.querySelectorAll(".content"),
   about = document.querySelector(".content--about"),
   features = document.querySelector(".content--features"),
@@ -165,3 +166,4 @@ tabAbout.addEventListener("mouseout", () => hoverOut());
 tabFeatures.addEventListener("mouseout", () => hoverOut());
 tabPenthouse.addEventListener("mouseout", () => hoverOut());
 tabChoise.addEventListener("mouseout", () => hoverOut());
+})();
