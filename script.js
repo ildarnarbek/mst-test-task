@@ -74,7 +74,6 @@ function switchMenu(item, pic, disc, num) {
   textOverflow(disc);
 }
 
-агт
 
 function textOverflow(disc) {
   textBlock = disc.querySelector(".description-container__text");
