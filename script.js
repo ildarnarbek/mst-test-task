@@ -41,13 +41,15 @@ const allMenuBackgrounds = document.querySelectorAll(
 );
 const allPics = document.querySelectorAll(".pic-block");
 
+const allCutters =  document.querySelectorAll("description-container__cutter");
+
+
 const Pic1 = document.querySelector(".pic-block--1");
 const Pic2 = document.querySelector(".pic-block--2");
 const Pic3 = document.querySelector(".pic-block--3");
 const Pic4 = document.querySelector(".pic-block--4");
 const Pic5 = document.querySelector(".pic-block--5");
 const Pic6 = document.querySelector(".pic-block--6");
-// const activeTab = document.querySelector(".menu-block__item--border-bottom");
 
 function switchMenu(item, pic, disc, num) {
   numberOfDescription.innerHTML = num + "/6";
@@ -70,6 +72,19 @@ function switchMenu(item, pic, disc, num) {
 
   swithPicture(pic);
   swithDescription(disc);
+  textOverflow (disc);
+
+}
+
+function textOverflow (disc){
+    textBlock = disc.querySelector(".description-container__text");
+    cutter = disc.querySelector(".description-container__cutter");
+    rows = textBlock.innerHTML.split("\n").length;
+    console.log(textBlock);
+    console.log(rows);  
+    if (rows>3) {
+        cutter.classList.add('description-container__cutter--show');
+    }
 }
 
 function selectMenuItem(item) {

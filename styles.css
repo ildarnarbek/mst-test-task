@@ -1,6 +1,3 @@
-/* div {
-  border: 1px solid blueviolet;
-} */
 @font-face {
   font-family: Gilroy-ExtraBold;
   src: url(fonts/Gilroy-ExtraBold.otf);
@@ -82,25 +79,6 @@
   flex-direction: column;
 }
 
-/* .menu-block__item:hover {
-  margin: 0px 28px;
-  padding-bottom: 8px;
-  border-bottom: 4px solid #d88f5e;
-} */
-
-/* .menu-block__item:hover:after{
-    width: 100%;
-} */
-/* .menu-block__item::after {
-    margin-top: 8px;
-    display: block;
-    content: "";
-    height: 4px;
-    width: 0%;
-    background-color: #d88f5e;
-    transition: width .3s ease-in-out;
-} */
-
 .header-container__block--row {
   position: relative;
 }
@@ -114,16 +92,6 @@
   transition: 0.7s;
   position: absolute;
 }
-
-/* .header-container__block::after {
-    margin-top: 8px;
-    display: block;
-    content: "";
-    height: 4px;
-    width: 0%;
-    background-color: #d88f5e;
-    transition: width .3s ease-in-out; 
-} */
 
 .main {
   width: 100%;
@@ -200,7 +168,6 @@
   text-transform: uppercase;
 }
 
-
 .content-block {
   width: 84.22222%;
   max-height: 840px;
@@ -233,7 +200,7 @@
   height: 100%;
   /* margin-top: 330px; */
   padding-top: 43%;
-  padding-bottom: 18.92%;
+  padding-bottom: 43%;
   padding-left: 22.666%;
   padding-right: 20%;
   transition: height 0.5s, opacity 0.7s, padding-top 0.5s, padding-bottom 0.5s;
@@ -261,7 +228,8 @@
 .description-container__info {
   font-size: 18px;
   line-height: 30px;
-  padding-bottom: 17.976%;
+  /* height: 100%; */
+  /* padding-bottom: 17.976%; */
   font-family: Gilroy-Light;
 }
 .description-container__num-block {
@@ -327,3 +295,54 @@
 
   top: 0;
 }
+
+.footer {
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  text-transform: uppercase;
+  color: #505050;
+  font-family: Gilroy-Light;
+  font-size: 13px;
+  padding-left: 60px;
+}
+.footer__delimiter {
+  padding: 0px 20px;
+}
+
+.description-container__cutter {
+  width: 28px;
+  height: 28px;
+  top: 50%;
+  left: 50%;
+  /* font-size: 13px; */
+  line-height: 17px;
+  /* position: relative; */
+  background: #262525;
+  text-align: center;
+  display: none;
+}
+
+.description-container__link {
+  color: #f0f0f0;
+  text-decoration: none;
+}
+
+.description-container__text {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height:88px;
+    /* float: left; */
+}
+
+.description-container__cutter--show{
+    display: block;
+    /* float: right; */
+}
+
