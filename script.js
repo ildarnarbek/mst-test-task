@@ -1,12 +1,13 @@
-const item1 = document.querySelector(".nav-bar__item--1"),
+const allMenuItems = document.querySelectorAll(".nav-bar__item "),
+  item1 = document.querySelector(".nav-bar__item--1"),
   item2 = document.querySelector(".nav-bar__item--2"),
   item3 = document.querySelector(".nav-bar__item--3"),
   item4 = document.querySelector(".nav-bar__item--4"),
   item5 = document.querySelector(".nav-bar__item--5"),
   item6 = document.querySelector(".nav-bar__item--6");
 
-const descriptions = document.querySelectorAll(".description-container");
-const description1 = document.querySelector(".description-container--1"),
+const descriptions = document.querySelectorAll(".description-container"),
+  description1 = document.querySelector(".description-container--1"),
   description2 = document.querySelector(".description-container--2"),
   description3 = document.querySelector(".description-container--3"),
   description4 = document.querySelector(".description-container--4"),
@@ -17,39 +18,37 @@ const numberOfDescription = document.querySelector(
   ".description-container__num-block"
 );
 
-const content = document.querySelectorAll(".content");
-const about = document.querySelector(".content--about"),
+const content = document.querySelectorAll(".content"),
+  about = document.querySelector(".content--about"),
   features = document.querySelector(".content--features"),
   penthouse = document.querySelector(".content--penthouse"),
   choise = document.querySelector(".content--choise");
 
-const tabAbout = document.querySelector(".menu-block__item--about"),
-  tabFeatures = document.querySelector(".menu-block__item--features"),
-  tabPenthouse = document.querySelector(".menu-block__item--penthouse"),
-  tabChoise = document.querySelector(".menu-block__item--choise");
+const tabAbout = document.querySelector(".tabs-block__tab--about"),
+  tabFeatures = document.querySelector(".tabs-block__tab--features"),
+  tabPenthouse = document.querySelector(".tabs-block__tab--penthouse"),
+  tabChoise = document.querySelector(".tabs-block__tab--choise");
 
-const menuItems = document.querySelectorAll(".menu-block__item");
-// переделать меню на таб
-const menu = document.querySelector(".menu-block");
+const allTabs = document.querySelectorAll(".tabs-block__tab");
+
+const tabsBlock = document.querySelector(".tabs-block");
 
 const line = document.querySelector(".line");
 
 const menuHover = document.querySelector(".nav-bar__item--background-hover");
-const allMenuItems = document.querySelectorAll(".nav-bar__item ");
+
 const allMenuBackgrounds = document.querySelectorAll(
   ".nav-bar__item--background"
 );
-const allPics = document.querySelectorAll(".pic-block");
+const allPics = document.querySelectorAll(".pic-block"),
+  Pic1 = document.querySelector(".pic-block--1"),
+  Pic2 = document.querySelector(".pic-block--2"),
+  Pic3 = document.querySelector(".pic-block--3"),
+  Pic4 = document.querySelector(".pic-block--4"),
+  Pic5 = document.querySelector(".pic-block--5"),
+  Pic6 = document.querySelector(".pic-block--6");
 
-const allCutters =  document.querySelectorAll("description-container__cutter");
-
-
-const Pic1 = document.querySelector(".pic-block--1");
-const Pic2 = document.querySelector(".pic-block--2");
-const Pic3 = document.querySelector(".pic-block--3");
-const Pic4 = document.querySelector(".pic-block--4");
-const Pic5 = document.querySelector(".pic-block--5");
-const Pic6 = document.querySelector(".pic-block--6");
+const allCutters = document.querySelectorAll("description-container__cutter");
 
 function switchMenu(item, pic, disc, num) {
   numberOfDescription.innerHTML = num + "/6";
@@ -72,19 +71,16 @@ function switchMenu(item, pic, disc, num) {
 
   swithPicture(pic);
   swithDescription(disc);
-  textOverflow (disc);
-
+  textOverflow(disc);
 }
 
-function textOverflow (disc){
-    textBlock = disc.querySelector(".description-container__text");
-    cutter = disc.querySelector(".description-container__cutter");
-    rows = textBlock.innerHTML.split("\n").length;
-    console.log(textBlock);
-    console.log(rows);  
-    if (rows>3) {
-        cutter.classList.add('description-container__cutter--show');
-    }
+function textOverflow(disc) {
+  textBlock = disc.querySelector(".description-container__text");
+  cutter = disc.querySelector(".description-container__cutter");
+  rows = textBlock.innerHTML.split("\n").length;
+  if (rows > 3) {
+    cutter.classList.add("description-container__cutter--show");
+  }
 }
 
 function selectMenuItem(item) {
@@ -116,22 +112,15 @@ function swithDescription(disc) {
     i.classList.remove("disc-show");
   });
   disc.classList.add("disc-show");
-
-  // disc.addEventListener("transitionend", function() {
-  //     descriptions.forEach(function(i) {
-  //     i.classList.remove("current-disc");
-  //   });
-  //   disc.classList.add("current-disc");
-  // });
 }
 
 function selectTab(tab) {
-  menuItems.forEach(function(i) {
-    i.classList.remove("menu-block__item--border-bottom");
+  allTabs.forEach(function(i) {
+    i.classList.remove("tabs-block__tab--border-bottom");
   });
-  tab.classList.add("menu-block__item--border-bottom");
+  tab.classList.add("tabs-block__tab--border-bottom");
 
-  activeTab = document.querySelector(".menu-block__item--border-bottom");
+  activeTab = document.querySelector(".tabs-block__tab--border-bottom");
   width = activeTab.offsetWidth + "px";
   line.style.width = width;
 }
@@ -144,11 +133,37 @@ function switchTab(item, tab) {
   item.classList.remove("content--hide");
 
   right =
-    menu.offsetWidth - activeTab.offsetLeft - activeTab.offsetWidth + "px";
+    tabsBlock.offsetWidth - activeTab.offsetLeft - activeTab.offsetWidth + "px";
   line.style.right = right;
-  left = activeTab.offsetLeft - menu.offsetLeft + "px";
+  left = activeTab.offsetLeft - tabsBlock.offsetLeft + "px";
   line.style.left = left;
 }
+
+function hoverOn(tab) {
+    activeTab = document.querySelector(".tabs-block__tab--border-bottom");
+  
+    if (tab.offsetLeft > activeTab.offsetLeft) {
+      widthLine = tab.offsetLeft - activeTab.offsetLeft + tab.offsetWidth;
+      left = activeTab.offsetLeft - tabsBlock.offsetLeft + "px";
+      line.style.left = left;
+      line.style.right = "auto";
+    } else if (tab.offsetLeft < activeTab.offsetLeft) {
+      widthLine = activeTab.offsetLeft - tab.offsetLeft + activeTab.offsetWidth;
+      right =
+        tabsBlock.offsetWidth - activeTab.offsetLeft - activeTab.offsetWidth + "px";
+      line.style.left = "auto";
+      line.style.right = right;
+    } else if ((tab.offsetLeft = activeTab.offsetLeft)) {
+      widthLine = activeTab.offsetWidth;
+    }
+    line.style.width = widthLine + "px";
+  }
+  
+  function hoverOut() {
+    activeTab = document.querySelector(".tabs-block__tab--border-bottom");
+    width = activeTab.offsetWidth;
+    line.style.width = width + "px";
+  }
 
 item1.addEventListener("click", () => switchMenu(item1, Pic1, description1, 1));
 item2.addEventListener("click", () => switchMenu(item2, Pic2, description2, 2));
@@ -164,32 +179,7 @@ tabPenthouse.addEventListener("click", () =>
 );
 tabChoise.addEventListener("click", () => switchTab(choise, tabChoise));
 
-function hoverOn(tab) {
-  activeTab = document.querySelector(".menu-block__item--border-bottom");
 
-  if (tab.offsetLeft > activeTab.offsetLeft) {
-    widthLine = tab.offsetLeft - activeTab.offsetLeft + tab.offsetWidth;
-    left = activeTab.offsetLeft - menu.offsetLeft + "px";
-    line.style.left = left;
-    line.style.right = "auto";
-  } else if (tab.offsetLeft < activeTab.offsetLeft) {
-    widthLine = activeTab.offsetLeft - tab.offsetLeft + activeTab.offsetWidth;
-    right =
-      menu.offsetWidth - activeTab.offsetLeft - activeTab.offsetWidth + "px";
-    line.style.left = "auto";
-    line.style.right = right;
-  } else if ((tab.offsetLeft = activeTab.offsetLeft)) {
-    widthLine = activeTab.offsetWidth;
-  }
-  line.style.width = widthLine + "px";
-}
-
-function hoverOut() {
-  activeTab = document.querySelector(".menu-block__item--border-bottom");
-  width = activeTab.offsetWidth;
-  line.style.width = width + "px";
-  console.log("ширина при убирании" + width);
-}
 
 tabAbout.addEventListener("mouseover", () => hoverOn(tabAbout));
 tabAbout.addEventListener("mouseout", () => hoverOut());

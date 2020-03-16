@@ -52,7 +52,7 @@
   left: calc(100% - 95px);
   background: url("img/IconBurger.png") 50% 50% no-repeat, #262525;
 }
-.menu-block {
+.tabs-block {
   display: flex;
   flex-direction: row;
   align-content: flex-start;
@@ -62,7 +62,7 @@
   letter-spacing: 1.1px;
   font-family: Gilroy-ExtraBold;
 }
-.menu-block__item {
+.tabs-block__tab {
   margin: 0px 21.5px;
   padding-top: 4px;
   padding-bottom: 7px;
@@ -70,7 +70,7 @@
   padding-right: 6.5px;
   cursor: pointer;
 }
-.menu-block__item--border-bottom {
+.tabs-block__tab--border-bottom {
   /* border-bottom: 4px solid #d88f5e; */
 }
 
@@ -226,10 +226,6 @@
 }
 
 .description-container__info {
-  font-size: 18px;
-  line-height: 30px;
-  /* height: 100%; */
-  /* padding-bottom: 17.976%; */
   font-family: Gilroy-Light;
 }
 .description-container__num-block {
@@ -331,18 +327,31 @@
 }
 
 .description-container__text {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    height:88px;
-    /* float: left; */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 88px;
+  /* text-align: justify; */
+  /* float: left; */
+  font-size: 18px;
+  line-height: 30px;
+  /* position: relative; */
+}
+.description-container__info {
+  /* display: inline-block; */
+  /* position: relative; */
+  /* width: 100%; */
+  /* box-sizing: border-box; */
 }
 
-.description-container__cutter--show{
-    display: block;
-    /* float: right; */
+.description-container__cutter--show {
+  display: block;
+  /* float: left; */
+  /* position: absolute; */
+  /* float: right; */
+  /* bottom: 0px; */
+  /* right: 0px; */
 }
-
