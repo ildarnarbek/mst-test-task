@@ -35,26 +35,61 @@ const allMenuItems = document.querySelectorAll(".nav-bar__item ");
 const allMenuBackgrounds = document.querySelectorAll(
   ".nav-bar__item--background"
 );
+const allPics = document.querySelectorAll(".pic-block");
+
+const Pic1 = document.querySelector(".pic-block--1");
+const Pic2 = document.querySelector(".pic-block--2");
+const Pic3 = document.querySelector(".pic-block--3");
+const Pic4 = document.querySelector(".pic-block--4");
+const Pic5 = document.querySelector(".pic-block--5");
+const Pic6 = document.querySelector(".pic-block--6");
 // const activeTab = document.querySelector(".menu-block__item--border-bottom");
 
-const lc = item1.firstElementChild;
-console.log(allMenuBackgrounds);
+function switchMenu(contant, item, pic) {
+  //   contentBlocks.forEach(function(i) {
+  //     i.classList.add("content-block--hide");
+  //   });
+  //   contant.classList.remove("content-block--hide");
+  let previous = document.querySelector(".nav-bar__item--selected");
+  selectMenuItem(item);
+  let current = document.querySelector(".nav-bar__item--selected");
 
-function switchMenu(contant, item) {
-  contentBlocks.forEach(function(i) {
-    i.classList.add("content-block--hide");
-  });
-  contant.classList.remove("content-block--hide");
+  if (previous.offsetTop > current.offsetTop) {
+      pic.style.top = 'auto';
+      pic.style.bottom = 0;
+  }
+  else if (previous.offsetTop < current.offsetTop) {
+    pic.style.top = 0;
+    pic.style.bottom = 'auto';
+  }
 
+  
+  swithPicture(pic);
+}
+
+function selectMenuItem(item) {
   allMenuItems.forEach(function(i) {
     i.classList.remove("nav-bar__item--selected");
   });
   item.classList.add("nav-bar__item--selected");
-
   allMenuBackgrounds.forEach(function(i) {
     i.classList.remove("nav-bar__item--background-hover");
   });
   item.firstElementChild.classList.add("nav-bar__item--background-hover");
+}
+
+function swithPicture(pic) {
+  allPics.forEach(function(i) {
+    i.classList.remove("pic-show");
+  });
+  pic.classList.add("pic-show");
+
+  pic.addEventListener("transitionend", function() {
+    allPics.forEach(function(i) {
+      i.classList.remove("current-pic");
+    });
+    pic.classList.add("current-pic");
+  });
 }
 
 function selectTab(tab) {
@@ -82,12 +117,12 @@ function switchTab(item, tab) {
   line.style.left = left;
 }
 
-item1.addEventListener("click", () => switchMenu(contentBlock1, item1));
-item2.addEventListener("click", () => switchMenu(contentBlock2, item2));
-item3.addEventListener("click", () => switchMenu(contentBlock3, item3));
-item4.addEventListener("click", () => switchMenu(contentBlock4, item4));
-item5.addEventListener("click", () => switchMenu(contentBlock5, item5));
-item6.addEventListener("click", () => switchMenu(contentBlock6, item6));
+item1.addEventListener("click", () => switchMenu(contentBlock1, item1, Pic1));
+item2.addEventListener("click", () => switchMenu(contentBlock2, item2, Pic2));
+item3.addEventListener("click", () => switchMenu(contentBlock3, item3, Pic3));
+item4.addEventListener("click", () => switchMenu(contentBlock4, item4, Pic4));
+item5.addEventListener("click", () => switchMenu(contentBlock5, item5, Pic5));
+item6.addEventListener("click", () => switchMenu(contentBlock6, item6, Pic6));
 
 tabAbout.addEventListener("click", () => switchTab(about, tabAbout));
 tabFeatures.addEventListener("click", () => switchTab(features, tabFeatures));
