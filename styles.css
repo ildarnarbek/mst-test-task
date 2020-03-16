@@ -45,6 +45,7 @@
   background: #262525;
   position: absolute;
   top: 25px;
+  z-index: 99;
 }
 .square--left {
   left: 25px;
@@ -73,7 +74,7 @@
   cursor: pointer;
 }
 .menu-block__item--border-bottom {
-  border-bottom: 4px solid #d88f5e;
+  /* border-bottom: 4px solid #d88f5e; */
 }
 
 .header-container__block--row {
@@ -214,15 +215,35 @@
 }
 .description {
   width: 50%;
-  background: #f0f0f0;
   box-sizing: border-box;
+  position: relative;
+  background: #f0f0f0;
+  z-index: 10;
+  overflow: hidden;
 }
 .description-container {
-  padding-top: 39%;
+  /* width: 100%; */
+  height: 0%;
+  position: absolute;
+  left: 0;
+  box-sizing: border-box;
+  background: #f0f0f0;
+  opacity: 0;
+  /* z-index: 30; */
+}
+.disc-show {
+  opacity: 1;
+  height: 100%;
+  /* margin-top: 330px; */
+  padding-top: 43%;
   padding-bottom: 18.92%;
   padding-left: 22.666%;
   padding-right: 20%;
+  transition: height 0.5s, opacity 0.7s, padding-top 0.5s, padding-bottom 0.5s;
+  z-index: 10;
+  /* bottom: 0; */
 }
+
 .description-container__title {
   font-weight: 800;
   font-size: 44px;
@@ -239,9 +260,21 @@
 }
 .description-container__num-block {
   color: #505050;
+  background: #f0f0f0;
+  width: 100%;
+  /* height: 40%; */
   font-size: 17px;
   line-height: 20px;
+  position: absolute;
+  padding-top: 150px;
+  padding-left: 172px;
+  padding-bottom: 159px;
+  bottom: 0px;
+  box-sizing: border-box;
+  z-index: 20;
+
 }
+
 .picture {
   width: 50%;
   /* transition: 0.8s; */
@@ -276,14 +309,14 @@
 .pic-block--6 {
   background: url("img/pic-6.png") 50% 50%;
 }
-.current-pic{
-    height: 100%;
-    z-index: 1;
+.current-pic {
+  height: 100%;
+  z-index: 1;
 }
 
 .pic-show {
   height: 100%;
-  transition: height 0.2s;
+  transition: height 0.3s;
 
   z-index: 10;
 

@@ -5,13 +5,13 @@ const item1 = document.querySelector(".nav-bar__item--1"),
   item5 = document.querySelector(".nav-bar__item--5"),
   item6 = document.querySelector(".nav-bar__item--6");
 
-const contentBlocks = document.querySelectorAll(".content-block");
-const contentBlock1 = document.querySelector(".content-block--1"),
-  contentBlock2 = document.querySelector(".content-block--2"),
-  contentBlock3 = document.querySelector(".content-block--3"),
-  contentBlock4 = document.querySelector(".content-block--4"),
-  contentBlock5 = document.querySelector(".content-block--5"),
-  contentBlock6 = document.querySelector(".content-block--6");
+const descriptions = document.querySelectorAll(".description-container");
+const description1 = document.querySelector(".description-container--1"),
+  description2 = document.querySelector(".description-container--2"),
+  description3 = document.querySelector(".description-container--3"),
+  description4 = document.querySelector(".description-container--4"),
+  description5 = document.querySelector(".description-container--5"),
+  description6 = document.querySelector(".description-container--6");
 
 const content = document.querySelectorAll(".content");
 const about = document.querySelector(".content--about"),
@@ -45,7 +45,7 @@ const Pic5 = document.querySelector(".pic-block--5");
 const Pic6 = document.querySelector(".pic-block--6");
 // const activeTab = document.querySelector(".menu-block__item--border-bottom");
 
-function switchMenu(contant, item, pic) {
+function switchMenu(item, pic, disc) {
   //   contentBlocks.forEach(function(i) {
   //     i.classList.add("content-block--hide");
   //   });
@@ -55,16 +55,19 @@ function switchMenu(contant, item, pic) {
   let current = document.querySelector(".nav-bar__item--selected");
 
   if (previous.offsetTop > current.offsetTop) {
-      pic.style.top = 'auto';
-      pic.style.bottom = 0;
-  }
-  else if (previous.offsetTop < current.offsetTop) {
+    pic.style.top = "auto";
+    pic.style.bottom = 0;
+    disc.style.top = 0;
+    disc.style.bottom = "auto";
+  } else if (previous.offsetTop < current.offsetTop) {
     pic.style.top = 0;
-    pic.style.bottom = 'auto';
+    pic.style.bottom = "auto";
+    disc.style.top = "auto";
+    disc.style.bottom = 0;
   }
 
-  
   swithPicture(pic);
+  swithDescription(disc);
 }
 
 function selectMenuItem(item) {
@@ -91,6 +94,19 @@ function swithPicture(pic) {
     pic.classList.add("current-pic");
   });
 }
+function swithDescription(disc) {
+  descriptions.forEach(function(i) {
+    i.classList.remove("disc-show");
+  });
+  disc.classList.add("disc-show");
+
+  // disc.addEventListener("transitionend", function() {
+  //     descriptions.forEach(function(i) {
+  //     i.classList.remove("current-disc");
+  //   });
+  //   disc.classList.add("current-disc");
+  // });
+}
 
 function selectTab(tab) {
   menuItems.forEach(function(i) {
@@ -99,7 +115,7 @@ function selectTab(tab) {
   tab.classList.add("menu-block__item--border-bottom");
 
   activeTab = document.querySelector(".menu-block__item--border-bottom");
-  width = activeTab.offsetWidth - 4 + "px";
+  width = activeTab.offsetWidth + 13 + "px";
   line.style.width = width;
 }
 
@@ -117,12 +133,12 @@ function switchTab(item, tab) {
   line.style.left = left;
 }
 
-item1.addEventListener("click", () => switchMenu(contentBlock1, item1, Pic1));
-item2.addEventListener("click", () => switchMenu(contentBlock2, item2, Pic2));
-item3.addEventListener("click", () => switchMenu(contentBlock3, item3, Pic3));
-item4.addEventListener("click", () => switchMenu(contentBlock4, item4, Pic4));
-item5.addEventListener("click", () => switchMenu(contentBlock5, item5, Pic5));
-item6.addEventListener("click", () => switchMenu(contentBlock6, item6, Pic6));
+item1.addEventListener("click", () => switchMenu(item1, Pic1, description1));
+item2.addEventListener("click", () => switchMenu(item2, Pic2, description2));
+item3.addEventListener("click", () => switchMenu(item3, Pic3, description3));
+item4.addEventListener("click", () => switchMenu(item4, Pic4, description4));
+item5.addEventListener("click", () => switchMenu(item5, Pic5, description5));
+item6.addEventListener("click", () => switchMenu(item6, Pic6, description6));
 
 tabAbout.addEventListener("click", () => switchTab(about, tabAbout));
 tabFeatures.addEventListener("click", () => switchTab(features, tabFeatures));
