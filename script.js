@@ -74,6 +74,8 @@ function switchMenu(item, pic, disc, num) {
   textOverflow(disc);
 }
 
+агт
+
 function textOverflow(disc) {
   textBlock = disc.querySelector(".description-container__text");
   cutter = disc.querySelector(".description-container__cutter");
@@ -133,10 +135,10 @@ function switchTab(item, tab) {
   item.classList.remove("content--hide");
 
   right =
-    tabsBlock.offsetWidth - activeTab.offsetLeft - activeTab.offsetWidth + "px";
-  line.style.right = right;
-  left = activeTab.offsetLeft - tabsBlock.offsetLeft + "px";
-  line.style.left = left;
+    tabsBlock.offsetWidth - activeTab.offsetLeft - activeTab.offsetWidth;
+  line.style.right = right + "px";
+  left = activeTab.offsetLeft - tabsBlock.offsetLeft;
+  line.style.left = left + "px";
 }
 
 function hoverOn(tab) {
@@ -144,15 +146,15 @@ function hoverOn(tab) {
   
     if (tab.offsetLeft > activeTab.offsetLeft) {
       widthLine = tab.offsetLeft - activeTab.offsetLeft + tab.offsetWidth;
-      left = activeTab.offsetLeft - tabsBlock.offsetLeft + "px";
-      line.style.left = left;
+      left = activeTab.offsetLeft - tabsBlock.offsetLeft;
+      line.style.left = left + "px";
       line.style.right = "auto";
     } else if (tab.offsetLeft < activeTab.offsetLeft) {
       widthLine = activeTab.offsetLeft - tab.offsetLeft + activeTab.offsetWidth;
       right =
-        tabsBlock.offsetWidth - activeTab.offsetLeft - activeTab.offsetWidth + "px";
+        tabsBlock.offsetWidth - activeTab.offsetLeft - activeTab.offsetWidth;
       line.style.left = "auto";
-      line.style.right = right;
+      line.style.right = right + "px";
     } else if ((tab.offsetLeft = activeTab.offsetLeft)) {
       widthLine = activeTab.offsetWidth;
     }
